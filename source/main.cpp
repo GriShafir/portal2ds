@@ -55,13 +55,10 @@ int main() {
         glBoxFilled(port2.pos[0], port2.pos[1], port2.pos[0] + 5, port2.pos[1] + 43, RGB15(255, 109, 43)); // orange portal
 
         iprintf("\x1b[2J");
-        iprintf("Portal2DS - Made by GriShafir\n");
-        iprintf("\nExample of Portal game in 2D \nmade for Nintendo DS.\n");
+        iprintf("Portal2DS - Made by GriShafir\n\nExample of Portal game in 2D \nmade for Nintendo DS.\n");
 
-        iprintf("\nTo move around, press Left and \nRight on the D-Pad.");
-        iprintf("\nTo jump, press A.");
-        iprintf("\nTo create blue portal, press X.");
-        iprintf("\nTo create orange portal, press \nY.");
+        iprintf("\nTo move around, press Left and \nRight on the D-Pad.\nTo jump, press A.");
+        iprintf("\nTo create blue portal, press X.\nTo create orange portal, press \nY.");
 
         iprintf("\nPlayer's coordinates: \n%i, %i\n", playerPosX, playerPosY);
         iprintf("\nBlue portal's coordinates: \n%i, %i\n", port1.pos[0], port1.pos[1]);
@@ -93,7 +90,6 @@ int main() {
                 port1.pos[0] = 0;
                 port1.side = 0;
             }
-            // mmEffectEx(&fire_blue);
 
         } else if (KEY_Y & keysDown()) { // creating orange portal
             port2.pos[1] = playerPosY - 5;
@@ -105,7 +101,6 @@ int main() {
                 port2.pos[0] = 0;
                 port2.side = 0;
             }
-            // mmEffectEx(&fire_orange);
         }
 
         /* else if (KEY_R & keysDown() & weigh_cube.got == 0) { // getting cube
@@ -114,91 +109,38 @@ int main() {
         } else if (KEY_R & keysDown() & weigh_cube.got == 1) { // placing cube
             weigh_cube.got = 0;
         } */
+        if ((playerPosY > port1.pos[1]) & (playerPosY + 33 < port1.pos[1] + 43)) {
+            if (port1.side == 0 & playerPosX < port1.pos[0]) {
+                playerPosX = port2.pos[0] - 28;
+                playerPosY = port2.pos[1] + 5;
 
-        if (port1.side == 1) {
-            if (playerPosX + 18 > port1.pos[0] + 5) {
-                if ((playerPosY > port1.pos[1]) & (playerPosY + 33 < port1.pos[1] + 43)) {
-                    playerPosX = port2.pos[0] + 10;
-                    playerPosY = port2.pos[1] + 5;
+                gunPosX = port2.pos[0] - 25;
+                gunPosY = port2.pos[1] + 13;
 
-                    gunPosX = port2.pos[0] + 7;
-                    gunPosY = port2.pos[1] + 13;
-                }
+            } else if (port1.side == 1 & playerPosX + 18 > port1.pos[0] + 5) {
+                playerPosX = port2.pos[0] + 10;
+                playerPosY = port2.pos[1] + 5;
+
+                gunPosX = port2.pos[0] + 7;
+                gunPosY = port2.pos[1] + 13;
             }
-        } else {
-            if (playerPosX < port1.pos[0]) {
-                if ((playerPosY > port1.pos[1]) & (playerPosY + 33 < port1.pos[1] + 43)) {
-                    playerPosX = port2.pos[0] - 10;
-                    playerPosY = port2.pos[1] + 5;
+            
+        } if ((playerPosY > port2.pos[1]) & (playerPosY + 33 < port2.pos[1] + 43)) {
+            if (port2.side == 0 & playerPosX < port2.pos[0]) {
+                playerPosX = port1.pos[0] - 10;
+                playerPosY = port1.pos[1] + 5;
 
-                    gunPosX = port2.pos[0] - 10;
-                    gunPosY = port2.pos[1] + 13;
-                }
-            }
-        }
+                gunPosX = port1.pos[0] - 10;
+                gunPosY = port1.pos[1] + 13;
 
-        if (port2.side == 0) {
-            if (playerPosX < port2.pos[0]) {
-                if ((playerPosY > port2.pos[1]) & (playerPosY + 33 < port2.pos[1] + 43)) {
-                    playerPosX = port1.pos[0] - 10;
-                    playerPosY = port1.pos[1] + 5;
+            } else if (port2.side == 1 & playerPosX + 18 > port2.pos[0] + 5) {
+                playerPosX = port1.pos[0] + 10;
+                playerPosY = port1.pos[1] + 5;
 
-                    gunPosX = port1.pos[0] - 10;
-                    gunPosY = port1.pos[1] + 13;
-                }
-            }
-        } else {
-            if (playerPosX + 18 > port2.pos[0] + 5) {
-                if ((playerPosY > port2.pos[1]) & (playerPosY + 33 < port2.pos[1] + 43)) {
-                    playerPosX = port1.pos[0] + 10;
-                    playerPosY = port1.pos[1] + 5;
-
-                    gunPosX = port1.pos[0] + 7;
-                    gunPosY = port1.pos[1] + 13;
-                }
+                gunPosX = port1.pos[0] + 7;
+                gunPosY = port1.pos[1] + 13;
             }
         }
-
-        /* if (playerPosX + 18 > port1.pos[0] + 5) { // basic blue portal behaviour
-            if (port1.side == 1) {
-                if (playerPosY > port1.pos[1] & playerPosY + 33 < port1.pos[1] + 43) {
-                    playerPosX = port2.pos[0] + 3;
-                    playerPosY = port2.pos[1] + 5;
-
-                    gunPosX = port2.pos[0] + 7;
-                    gunPosY = port2.pos[1] + 13;
-
-                    /* cubePosX = port2.pos[0] + 54;
-                    cubePosY = port2.pos[1] + 3; 
-                }
-            } else {
-                if (playerPosY > port1.pos[1] & playerPosY + 33 < port1.pos[1] + 43) {
-                    playerPosX = port2.pos[0] - 3;
-                    playerPosY = port2.pos[1] + 5;
-
-                    gunPosX = port2.pos[0] + 7;
-                    gunPosY = port2.pos[1] + 13;
-                }
-            }
-        }  else if (playerPosX < port2.pos[0]) { // basic orange portal behaviour
-            if (port2.side == 0) {
-                if (playerPosY > port2.pos[1] & playerPosY + 33 < port2.pos[1] + 43) {
-                    playerPosX = port1.pos[0] - 3;
-                    playerPosY = port1.pos[1] + 5;
-
-                    gunPosX = port1.pos[0] - 10;
-                    gunPosY = port1.pos[1] + 13;
-                }
-            } else {
-                if (playerPosY > port2.pos[1] & playerPosY + 33 < port2.pos[1] + 43) {
-                    playerPosX = port1.pos[0] + 3;
-                    playerPosY = port1.pos[1] + 5;
-
-                    gunPosX = port1.pos[0] + 7;
-                    gunPosY = port1.pos[1] + 13;
-                }
-            }
-        } */
 
         if (facing == 0) { // gun's rendering
             gunPosX = playerPosX - 7;
@@ -233,4 +175,3 @@ int main() {
         swiWaitForVBlank();
     }
 }
-
