@@ -6,3 +6,10 @@ yay I added sprites 😁
 
 ## What's the purpose of this project?
 Maybe I would create a level creator from portal2ds, or maybe even the WHOLE GAME... But at this moment, I don't have any plans for it. Just a small project, where I discover libnds and easy gl2d.
+
+## Controls
+- Left - go left
+- Right - go right
+- A - jump
+- X - create blue portal
+- Y - create orange portal
