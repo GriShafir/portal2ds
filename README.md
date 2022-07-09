@@ -13,3 +13,6 @@ Maybe I would create a level creator from portal2ds, or maybe even the WHOLE GAM
 - A - jump
 - X - create blue portal
 - Y - create orange portal
+
+## Compiling
+Just launch file named "compile.bat". It should make both .nds and .elf files.
