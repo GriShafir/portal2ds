@@ -15,4 +15,8 @@ Maybe I would create a level creator from portal2ds, or maybe even the WHOLE GAM
 - Y - create orange portal
 
 ## Compiling
-Just launch file named "compile.bat". It should make both .nds and .elf files.
+1. Make sure you have installed devkitPro pacman. If not, go here — https://devkitpro.org/wiki/Getting_Started
+2. Download the repository code's .zip archive and extract it anywhere you want.
+3. In the extracted directory, there should be a file named "compile.bat". Launch it. If you cannot launch the file due to different OS, then open command prompt in the directory, write "make" and press Enter. This should make both .nds and .elf files.
+4. ???
+5. Profit!
