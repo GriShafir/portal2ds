@@ -26,6 +26,11 @@ SOURCES		:=	source
 DATA		:=	data  
 INCLUDES	:=	include
 GRAPHICS	:=	gfx
+ICON        :=  portal_logo.png
+
+GAME_TITLE     := portal2ds 0.1.2
+GAME_SUBTITLE1 := Alpha Sprites Test
+GAME_SUBTITLE2 := by GriShafir
 
 #---------------------------------------------------------------------------------
 # options for code generation
