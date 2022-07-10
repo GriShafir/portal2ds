@@ -22,4 +22,4 @@ Maybe I would create a level creator from portal2ds, or maybe even the WHOLE GAM
 5. Profit!
 
 ## Read this paragraph before downloading portal2ds from Releases!
-For some reason, 0.1.1-sprites and 0.1.2-sprites builds are broken on hardware (tested on DSi). The game loads slowly, and buttons X and Y aren't working. If you have the same symptoms, then follow Compiling paragraph's steps and the game should compile better. I hope you have great time!
+For some reason, 0.1.1-sprites build is broken on hardware (tested on DSi). The game loads slowly, and buttons X and Y aren't working. If you have the same symptoms, then follow Compiling paragraph's steps and the game should compile better. I hope you have great time!
