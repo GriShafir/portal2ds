@@ -1,6 +1,6 @@
 # portal2ds (Alpha Sprites Test)
 
-![Screenshot_5](https://user-images.githubusercontent.com/67635528/178231073-88f84c47-8289-46bd-bfc0-8054ca0bf2b8.png)
+![image](https://user-images.githubusercontent.com/67635528/178144288-abda3061-c8f4-4aa1-ad8b-6361bc23cf5e.png)
 
 yay I added sprites 😁
 
