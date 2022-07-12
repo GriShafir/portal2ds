@@ -1,6 +1,8 @@
 # portal2ds (Alpha Sprites Test)
 
-![image](https://user-images.githubusercontent.com/67635528/178144288-abda3061-c8f4-4aa1-ad8b-6361bc23cf5e.png)
+![image](https://user-images.githubusercontent.com/67635528/178497822-8b4e6eec-1d3a-4813-97ef-06a976b08227.png)
+
+
 
 yay I added sprites 😁
 
@@ -13,6 +15,7 @@ Maybe I would create a level creator from portal2ds, or maybe even the WHOLE GAM
 - A - jump
 - X - create blue portal
 - Y - create orange portal
+- B - grab a cube
 
 ## Compiling
 1. Make sure you have installed devkitPro pacman. If not, go here — https://devkitpro.org/wiki/Getting_Started
