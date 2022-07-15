@@ -1,8 +1,6 @@
-# portal2ds (Alpha Sprites Test)
+# portal2ds (Alpha Game Elements Test)
 
-![image](https://user-images.githubusercontent.com/67635528/178497822-8b4e6eec-1d3a-4813-97ef-06a976b08227.png)
-
-
+![The cube is on the button, the door is opened and Chell is looking forwards the door.png](https://user-images.githubusercontent.com/67635528/179305805-b3addf9e-381d-4837-bee2-55a23390df6f.png)
 
 yay I added sprites 😁
 
