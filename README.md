@@ -1,6 +1,7 @@
 # portal2ds (Alpha Game Elements Test)
 
-![The cube is on the button, the door is opened and Chell is looking forwards the door.png](https://user-images.githubusercontent.com/67635528/179305805-b3addf9e-381d-4837-bee2-55a23390df6f.png)
+![The cube is on the right side of the screen, the door is locked and Chell is standing in the center](https://user-images.githubusercontent.com/67635528/179355531-24f07958-2b44-45e1-a887-82fe4449258d.png)
+
 
 yay I added sprites 😁
 
