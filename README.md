@@ -20,7 +20,7 @@ yay I added sprites 😁
 - B - grab a cube
 
 ## Compiling
-1. Make sure you have installed devkitPro pacman. If not, go here — https://devkitpro.org/wiki/Getting_Started
+1. Make sure you have installed [devkitPro pacman](https://devkitpro.org/wiki/Getting_Started) and [Easy GL2D](https://github.com/DeathCamel57/libgl2d_ds).
 2. Download the repository code's .zip archive and extract it anywhere you want.
 3. In the extracted folder, there should be a file named `compile.bat`. Launch it. If you cannot launch the file due to different OS, then open command prompt in the folder, write "make" and press Enter. This should make both .nds and .elf files.
 4. ???
