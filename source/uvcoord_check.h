@@ -13,7 +13,7 @@
 
 
 const unsigned int check_texcoords[] = {
- 0, 0, 9, 9,				// 0
+ 0, 0, 9, 9,	   		  // 0
  10, 0, 9, 9,             // 1
 };
 

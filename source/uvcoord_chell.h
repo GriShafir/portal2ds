@@ -4,7 +4,7 @@
 
 #define CHELL_BITMAP_WIDTH   128
 #define CHELL_BITMAP_HEIGHT  256
-#define CHELL_NUM_IMAGES   11
+#define CHELL_NUM_IMAGES   13
 
 
 		//	Format:
@@ -24,6 +24,8 @@ const unsigned int chell_texcoords[] = {
  75, 51, 25, 26,            // 3 with gun
  102, 51, 27, 30,           // 4 with gun
  106, 0, 20, 24,            // looking up with gun
+ 79, 82, 23, 24,            // aim with gun
+ 102, 82, 27, 30,           // aim jump with gun
 };
 
 

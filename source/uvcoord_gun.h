@@ -13,9 +13,9 @@
 
 
 const unsigned int gun_texcoords[] = {
- 0, 0, 11, 8,				// no-portals
+ 0, 0, 11, 8,			   // no-portals
  13, 0, 11, 8,             // blue-portal
- 0, 9, 11, 8,                // orange-portal
+ 0, 9, 11, 8,              // orange-portal
 };
 
 
