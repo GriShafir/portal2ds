@@ -30,7 +30,7 @@ ICON        :=  portal_logo.png
 
 GAME_TITLE     := portal2ds
 GAME_SUBTITLE1 := Alpha Game Elements Test
-GAME_SUBTITLE2 := by GriShafir
+GAME_SUBTITLE2 := by hented
 
 #---------------------------------------------------------------------------------
 # options for code generation
