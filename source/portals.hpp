@@ -71,8 +71,8 @@ public:
         if ((playerPos[0] < port.pos[0] + 3) &&
             (playerPos[0] + playerSize[0] > port.pos[0]) &&
             (playerPos[1] + playerSize[1] > port.pos[1]) &&
-            (playerPos[1] < port.pos[1] + 29) &&
-            (playerPos[1] > port.pos[1])) return 1;
+            (playerPos[1] < port.pos[1] + 30) &&
+            (playerPos[1] + 3 > port.pos[1])) return 1;
         else return 0;
     }
 
@@ -94,7 +94,7 @@ public:
                     if (port1.pos[0] > port2.pos[0]) motion = abs(port1.pos[0] - port2.pos[0]) + 25;
             }
         }
-        playerPos[1] = port2.pos[1] + 5;
+        playerPos[1] = port2.pos[1];
         return motion;
     }
 

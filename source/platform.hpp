@@ -1,4 +1,8 @@
 // this is platforms, collisions etc.
+
+glImage PortalableTile[1];
+glImage NonportalableTile[1];
+
 class Platform
 {
 public:
@@ -40,12 +44,23 @@ public:
     {
         Platform g;
         g = *this;
-        int color = RGB15(0, 0, 0);
+        /*int color = RGB15(0, 0, 0);
         if (g.type == 0)
-            color = RGB15(5, 5, 5);
-        else if (g.type == 1)
             color = RGB15(219, 219, 219);
-        glBoxFilled(g.pos[0], g.pos[1], g.pos[2], g.pos[3], color);
+        else if (g.type == 1)
+            color = RGB15(5, 5, 5);
+        glBoxFilled(g.pos[0], g.pos[1], g.pos[2], g.pos[3], color);*/
+
+        if (g.type == 0) {
+            for (int i = 0; i < (g.pos[2] - g.pos[0])/16; i++) 
+                for (int j = 0; j < (g.pos[3] - g.pos[1])/16; j++) 
+                    glSprite(g.pos[0] + i * 16, g.pos[1] + j * 16, GL_FLIP_NONE, &PortalableTile[0]);
+        }
+        else if (g.type == 1) {
+            for (int i = 0; i < (g.pos[2] - g.pos[0])/16; i++) 
+                for (int j = 0; j < (g.pos[3] - g.pos[1])/16; j++) 
+                    glSprite(g.pos[0] + i * 16, g.pos[1] + j * 16, GL_FLIP_NONE, &NonportalableTile[0]);
+        }
     }
 };
 

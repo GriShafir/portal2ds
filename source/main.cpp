@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------------
-portal2ds by GriShafir
+portal2ds by hented
 
 Suppositioned controls:
 Hold R + D-PAD = move free camera (to shoot portals) =>
@@ -33,6 +33,8 @@ DOWN = Crouch
 #include "connect.h"
 #include "wheatley.h"
 #include "warning.h"
+#include "portalabletile.h"
+#include "nonportalabletile.h"
 
 // UVCOORD files (I wrote them myself)
 #include "uvcoord_chell.h"
@@ -70,7 +72,7 @@ glImage Warn[1];
 
 int floorHeight = SCREEN_HEIGHT - 28;
 
-int playerSize[2] = {20, 25};
+int playerSize[2] = {17, 30};
 int playerPos[2] = {SCREEN_WIDTH / 2 - playerSize[0], floorHeight - playerSize[1] - 100};
 int facing = 1; // 0 - left; 1 - right
 
@@ -96,7 +98,7 @@ int main()
                     chell_texcoords,                                                                    // Texture packer auto-generated array
                     GL_RGB256,                                                                          // texture type for glTexImage2D() in videoGL.h
                     TEXTURE_SIZE_128,                                                                   // sizeX for glTexImage2D() in videoGL.h
-                    TEXTURE_SIZE_256,                                                                   // sizeY for glTexImage2D() in videoGL.h
+                    TEXTURE_SIZE_128,                                                                   // sizeY for glTexImage2D() in videoGL.h
                     GL_TEXTURE_WRAP_S | GL_TEXTURE_WRAP_T | TEXGEN_OFF | GL_TEXTURE_COLOR0_TRANSPARENT, // param for glTexImage2D() in videoGL.h
                     256,                                                                                // Length of the palette to use (256 colors)
                     (u16 *)chellPal,                                                                    // Load our 256 color player palette
@@ -140,9 +142,9 @@ int main()
     );
 
     glLoadTileSet(CDropper,
-                    19,
+                    21,
                     22,
-                    19,
+                    21,
                     22,
                     GL_RGB256,
                     TEXTURE_SIZE_32,
@@ -277,6 +279,34 @@ int main()
                     (u8 *)warningBitmap
     );
 
+    glLoadTileSet(PortalableTile,
+                    16,
+                    16,
+                    16,
+                    16,
+                    GL_RGB256,
+                    TEXTURE_SIZE_16,
+                    TEXTURE_SIZE_16,
+                    GL_TEXTURE_WRAP_S | GL_TEXTURE_WRAP_T | TEXGEN_OFF | GL_TEXTURE_COLOR0_TRANSPARENT,
+                    256,
+                    (u16 *)portalabletilePal,
+                    (u8 *)portalabletileBitmap
+    );
+
+    glLoadTileSet(NonportalableTile,
+                    16,
+                    16,
+                    16,
+                    16,
+                    GL_RGB256,
+                    TEXTURE_SIZE_16,
+                    TEXTURE_SIZE_16,
+                    GL_TEXTURE_WRAP_S | GL_TEXTURE_WRAP_T | TEXGEN_OFF | GL_TEXTURE_COLOR0_TRANSPARENT,
+                    256,
+                    (u16 *)nonportalabletilePal,
+                    (u8 *)nonportalabletileBitmap
+    );
+
 
     int Frame = 0;
     int BuFrame = 0;
@@ -290,7 +320,8 @@ int main()
 
     int ChellFlip = GL_FLIP_NONE;
 
-    int ChellFrame = 5;
+
+    int ChellFrame = 0;
     int PortalFrame = 0;
     int DoorFrame = 0;
     int AFPlateFrame = 0;
@@ -305,7 +336,7 @@ int main()
     port1.isShown = 1;
     port1.side = 0;
 
-    port2.pos[0] = 253;
+    port2.pos[0] = 251;
     port2.pos[1] = floorHeight - 29;
     port2.isShown = 1;
     port2.side = 1;
@@ -355,11 +386,11 @@ int main()
 
     Platform box1;
     box1.type = 0;
-    box1.pos = {port2.pos[0]+5, floorHeight-48, 256+38, floorHeight-1};
+    box1.pos = {port2.pos[0]+5, floorHeight-49, 256+32, floorHeight-1};
     
     Platform box2;
     box2.type = 0;
-    box2.pos = {-38, floorHeight-48, port1.pos[0]-1, floorHeight-1};
+    box2.pos = {-33, floorHeight-49, port1.pos[0]-1, floorHeight-1};
 
     /* game logic */
     while (1)
@@ -406,7 +437,7 @@ int main()
         box2.draw();
 
         iprintf("\x1b[2J");
-        iprintf("portal2ds v0.2.4-ge - Made by \nhented\n\nA Portal game in 2D made for \nNintendo DS(i).\n\n"); // desc
+        iprintf("portal2ds v0.2.5-ge - Made by \nhented\n\nA Portal game in 2D made for \nNintendo DS(i).\n\n"); // desc
 
         iprintf("To move around, press LEFT and \nRIGHT on the D-Pad.\n"); // controls
         iprintf("To jump, press A.\nTo grab an object, press B near that object.\n");
@@ -421,7 +452,7 @@ int main()
 
         if ((KEY_A & keysHeld()) & (jumped == 0))
         { // basic jumping
-            playerSpeed = -1.75;
+            playerSpeed = -1.5;
             jumped = 1;
         }
         else if (KEY_LEFT & keysHeld())
@@ -429,12 +460,12 @@ int main()
             world_move = 2;
             facing = 0;
 
-            if ((Frame & 5) == 0)
+            if ((Frame & 7) == 0)
             {
                 ChellFrame++;
 
-                if (ChellFrame > 8)
-                    ChellFrame = 6;
+                if (ChellFrame > 4)
+                    ChellFrame = 1;
             }
         }
         else if (KEY_RIGHT & keysHeld())
@@ -442,34 +473,39 @@ int main()
             world_move = -2;
             facing = 1;
 
-            if ((Frame & 5) == 0)
+            if ((Frame & 7) == 0)
             {
                 ChellFrame++;
 
-                if (ChellFrame > 8)
-                    ChellFrame = 6;
+                if (ChellFrame > 4)
+                    ChellFrame = 1;
             }
         }
         else if (KEY_UP & keysHeld())
         {
-            ChellFrame = 10;
+            ChellFrame = 7;
+            world_move = 0;
+        }
+        else if (KEY_DOWN & keysHeld())
+        {
+            ChellFrame = 8;
             world_move = 0;
         }
         else
         {
-            ChellFrame = 5;
-            world_move /= 2;
+            ChellFrame = 0;
 
-            if (world_move < .0005) world_move = 0;
+            world_move /= 2;
+            if (world_move < .001) world_move = 0;
         }
 
         if (KEY_X & keysDown()) {
-            port1.pos[1] = playerPos[1] - 4;
+            port1.pos[1] = playerPos[1];
             port1.shoot(box1, facing, playerPos); 
             port1.shoot(box2, facing, playerPos);
         }
         else if (KEY_Y & keysDown()) { 
-            port2.pos[1] = playerPos[1] - 4;
+            port2.pos[1] = playerPos[1];
             port2.shoot(box1, facing, playerPos);
             port2.shoot(box2, facing, playerPos); 
         }
@@ -574,9 +610,9 @@ int main()
         }
 
         if ((DoorFrame == 9) && (KEY_UP & keysDown()) // going in the door
-            && ((playerPos[0] > doorPos[0]) && (playerPos[0] + playerSize[0] < doorPos[0] + 29) && (playerPos[1] > doorPos[1])))
+            && ((playerPos[0] > doorPos[0]) && (playerPos[0] + playerSize[0] < doorPos[0] + 29) && (playerPos[1] + 3 > doorPos[1])))
         {
-            ChellFrame = 5;
+            ChellFrame = 0;
             break;
         }
 
@@ -649,9 +685,7 @@ int main()
         { // basic falling
             playerSpeed += 0.125;
 
-            if (KEY_R & keysHeld())
-                ChellFrame = 12;
-            else ChellFrame = 9;
+            ChellFrame = 5;
         }
         else
         { // basic not falling
@@ -660,9 +694,6 @@ int main()
             playerSpeed = 0;
             motion = 0;
             // playerPos[1] = wall1.pos[1] - playerSize[1];
-
-            if (KEY_R & keysHeld())
-                ChellFrame = 11;
         }
 
         if ((cube.pos[1] < wall1.pos[1] - 11) || 
