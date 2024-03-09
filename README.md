@@ -7,9 +7,7 @@
 Maybe I would create a level creator from portal2ds, or maybe even the WHOLE GAME... But at this moment, I don't have any plans for it. Just a small project, where I discover libnds and Easy GL2D.
 
 ## Screenshot
-![The cube is on the right side of the screen, the door is locked and Chell is standing in the center](https://github.com/GriShafir/portal2ds/assets/67635528/e5f4cf6d-a20c-45ef-8009-54b853f098e0)
-
-
+![The cube is on the right side of the screen, the door is locked and Chell is standing in the center](https://github.com/GriShafir/portal2ds/assets/67635528/45fcc5e2-c501-40dd-8b29-dc4590c45b63)
 
 yay I added sprites 😁
 
